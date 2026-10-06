@@ -181,7 +181,8 @@ p { margin: 0 0 1em; }
 }
 .hours-card h4 { color: #fff; font-size: 1.2rem; margin-bottom: .6em; }
 .hours-card ul { list-style: none; margin: 0; padding: 0; font-size: .9rem; }
-.hours-card li { display: flex; justify-content: space-between; gap: 10px; padding: 6px 0; border-top: 1px dashed rgba(255,255,255,.35); }
+.hours-card li { display: flex; flex-direction: column; gap: 2px; padding: 8px 0 2px; border-top: 1px dashed rgba(255,255,255,.35); }
+.hours-card li b { font-family: var(--font-head); font-size: 1.25rem; line-height: 1.2; }
 .deco-balloon {
   position: absolute; top: -30px; left: -30px; width: 70px; height: 84px;
   background: linear-gradient(90deg, var(--yellow) 0 33%, var(--pink) 33% 66%, var(--yellow) 66%);
@@ -459,7 +460,8 @@ p { margin: 0 0 1em; }
 .footer__logo { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
 .footer__logo img { height: 52px; width: auto; background: #fff; border-radius: 14px; padding: 6px; }
 .footer__logo span { font-family: var(--font-head); font-size: 1.9rem; font-weight: 700; color: #fff; }
-.footer__hours li { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px dashed rgba(255,255,255,.15); padding-bottom: 6px; }
+.footer__hours li { display: flex; flex-direction: column; border-bottom: 1px dashed rgba(255,255,255,.15); padding-bottom: 6px; }
+.footer__hours li span:last-child { color: #fff; font-weight: 700; }
 .footer__bottom { border-top: 1px solid rgba(255,255,255,.12); padding: 22px 0; text-align: center; }
 
 /* ---------- WhatsApp flotante ---------- */

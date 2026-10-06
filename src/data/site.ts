@@ -17,9 +17,7 @@ export const site = {
   instagram: { user: "@centrointegral_conectate", url: "https://www.instagram.com/centrointegral_conectate/" },
 
   hours: [
-    { days: "Lun – Vie", time: "9:00 a.m. – 7:00 p.m.", short: "9 a.m. – 7 p.m." },
-    { days: "Sábados", time: "9:00 a.m. – 1:00 p.m.", short: "9 a.m. – 1 p.m." },
-    { days: "Domingos", time: "Cerrado", short: "Cerrado" },
+    { days: "Lunes a domingo", time: "8:00 a.m. – 8:00 p.m.", short: "8 a.m. – 8 p.m." },
   ],
 };
 
@@ -428,7 +426,7 @@ export const ages = [
   "Más de 12 años",
 ];
 
-export const shifts = ["Mañana", "Tarde", "Sábado"];
+export const shifts = ["Mañana", "Tarde", "Fin de semana"];
 
 export const faqs = [
   {
