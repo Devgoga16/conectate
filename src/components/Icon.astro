@@ -1,7 +1,8 @@
 ---
 // Usa los íconos definidos en IconSprite.astro
+import type { IconName } from "../data/site";
 interface Props {
-  name: "whatsapp" | "speech" | "puzzle" | "heart" | "family" | "pin" | "instagram";
+  name: IconName | "whatsapp" | "pin" | "instagram";
   class?: string;
 }
 const { name, class: className } = Astro.props;

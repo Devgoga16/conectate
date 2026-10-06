@@ -1,0 +1,143 @@
+---
+import Wave from "./Wave.astro";
+import { team } from "../data/site";
+
+const initials = (name: string) =>
+  name
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0].toUpperCase())
+    .join("");
+---
+<section class="team" id="equipo">
+  <Wave position="top" fill="var(--white)" d="M0,0 L1440,0 L1440,40 C1200,80 960,0 720,30 C480,60 240,0 0,40 Z" />
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Nuestro equipo</span>
+      <h2>Especialistas que acompañan a tu peque</h2>
+      <p>Pamela trabaja junto a un equipo de profesionales comprometidos con el desarrollo integral de cada niño y niña.</p>
+    </div>
+
+    <div class="carousel reveal" role="region" aria-roledescription="carrusel" aria-label="Especialistas del equipo">
+      <div class="carousel__track" id="teamTrack" tabindex="0">
+        {team.map((m, i) => (
+          <article
+            class="member"
+            role="group"
+            aria-roledescription="diapositiva"
+            aria-label={`${i + 1} de ${team.length}: ${m.name}`}
+          >
+            <div class={`member__photo member__photo--${m.color}`}>
+              {m.photo ? (
+                <img src={m.photo} alt={m.name} loading="lazy" />
+              ) : (
+                <span class="member__initials">{initials(m.name)}</span>
+              )}
+            </div>
+            <div class="member__info">
+              <span class={`member__role member__role--${m.color}`}>{m.role}</span>
+              <h3>{m.name}</h3>
+              <p>{m.bio}</p>
+              <ul class="member__list">
+                {m.highlights.map((h) => <li>{h}</li>)}
+              </ul>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      {team.length > 1 && (
+        <div class="carousel__controls">
+          <button class="carousel__arrow" id="teamPrev" aria-label="Especialista anterior">←</button>
+          <div class="carousel__dots" id="teamDots">
+            {team.map((m, i) => (
+              <button
+                class:list={["carousel__dot", { "is-active": i === 0 }]}
+                aria-label={`Ver ${i + 1} de ${team.length}`}
+                aria-current={i === 0 ? "true" : undefined}
+              ></button>
+            ))}
+          </div>
+          <button class="carousel__arrow" id="teamNext" aria-label="Especialista siguiente">→</button>
+        </div>
+      )}
+    </div>
+  </div>
+  <Wave position="bottom" fill="var(--cream)" d="M0,30 C240,80 480,0 720,40 C960,80 1200,10 1440,40 L1440,80 L0,80 Z" />
+</section>
+
+<script>
+  const track = document.getElementById("teamTrack");
+  const prev = document.getElementById("teamPrev");
+  const next = document.getElementById("teamNext");
+  const dots = [...document.querySelectorAll<HTMLButtonElement>("#teamDots .carousel__dot")];
+
+  if (track && prev && next && dots.length > 1) {
+    const slides = [...track.children] as HTMLElement[];
+    let current = 0;
+
+    let target = -1; // destino de un desplazamiento en curso iniciado por flechas/puntos
+
+    const markActive = (i: number) => {
+      current = i;
+      dots.forEach((d, j) => {
+        d.classList.toggle("is-active", j === i);
+        if (j === i) d.setAttribute("aria-current", "true");
+        else d.removeAttribute("aria-current");
+      });
+    };
+
+    const goTo = (i: number) => {
+      target = (i + slides.length) % slides.length;
+      markActive(target);
+      track.scrollTo({ left: target * track.clientWidth, behavior: "smooth" });
+    };
+
+    prev.addEventListener("click", () => goTo(current - 1));
+    next.addEventListener("click", () => goTo(current + 1));
+    dots.forEach((d, i) => d.addEventListener("click", () => goTo(i)));
+    track.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") { e.preventDefault(); goTo(current + 1); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); goTo(current - 1); }
+    });
+
+    // Sincroniza los puntos con la posición (también al deslizar con el dedo o el trackpad)
+    let raf = 0;
+    track.addEventListener(
+      "scroll",
+      () => {
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => {
+          const i = Math.round(track.scrollLeft / track.clientWidth);
+          if (target !== -1) {
+            // Ignora posiciones intermedias mientras llega al destino
+            if (i === target) target = -1;
+            return;
+          }
+          if (i !== current) markActive(i);
+        });
+      },
+      { passive: true }
+    );
+
+    // Avance automático: se pausa al pasar el mouse, al enfocar o si la pestaña no está visible
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let paused = false;
+    const carousel = track.closest(".carousel")!;
+    carousel.addEventListener("mouseenter", () => (paused = true));
+    carousel.addEventListener("mouseleave", () => (paused = false));
+    carousel.addEventListener("focusin", () => (paused = true));
+    carousel.addEventListener("focusout", () => (paused = false));
+    // Si la persona desliza a mano, deja de esperar el destino y detiene el avance automático
+    const userScroll = () => { target = -1; paused = true; };
+    track.addEventListener("touchstart", userScroll, { passive: true });
+    track.addEventListener("wheel", () => (target = -1), { passive: true });
+
+    if (!reduceMotion) {
+      setInterval(() => {
+        if (!paused && !document.hidden) goTo(current + 1);
+      }, 6000);
+    }
+  }
+</script>

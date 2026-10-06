@@ -1,9 +1,8 @@
 ---
 import Icon from "./Icon.astro";
-import { ages, messages, services, shifts, site } from "../data/site";
+import { ages, evaluations, messages, services, shifts, site } from "../data/site";
 import { waLink } from "../lib/whatsapp";
 
-const serviceOptions = ["Evaluación inicial", ...services.map((s) => s.name), "Aún no lo sé, quiero orientación"];
 ---
 <section class="booking section" id="agenda">
   <div class="container booking__grid">
@@ -46,7 +45,13 @@ const serviceOptions = ["Evaluación inicial", ...services.map((s) => s.name), "
         <label>Servicio de interés
           <select name="servicio" id="servicio" required>
             <option value="">Selecciona</option>
-            {serviceOptions.map((s) => <option>{s}</option>)}
+            <optgroup label="Evaluaciones">
+              {evaluations.map((e) => <option>{e.name}</option>)}
+            </optgroup>
+            <optgroup label="Terapias y programas">
+              {services.map((s) => <option>{s.name}</option>)}
+            </optgroup>
+            <option>Aún no lo sé, quiero orientación</option>
           </select>
         </label>
       </div>

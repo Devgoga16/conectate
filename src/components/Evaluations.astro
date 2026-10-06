@@ -1,0 +1,50 @@
+---
+import Icon from "./Icon.astro";
+import Wave from "./Wave.astro";
+import { evaluations } from "../data/site";
+---
+<section class="evals section" id="evaluaciones">
+  <Wave position="top" fill="var(--cream)" d="M0,0 L1440,0 L1440,30 C1200,80 980,10 720,40 C460,70 240,10 0,40 Z" />
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Evaluaciones</span>
+      <h2>Conocer a tu peque es el primer paso</h2>
+      <p>Una evaluación nos permite entender cómo se está desarrollando y diseñar un plan de intervención a su medida.</p>
+    </div>
+
+    <div class="evals__grid">
+      {evaluations.map((ev) => (
+        <article class={`eval eval--${ev.color} reveal`}>
+          <div class="eval__head">
+            <span class="eval__badge"><Icon name={ev.icon} /></span>
+            <div>
+              <h3>{ev.name}</h3>
+              <span class="eval__age">{ev.age}</span>
+            </div>
+          </div>
+          <p class="eval__intro">{ev.intro}</p>
+          <h4 class="eval__list-title">{ev.listTitle}</h4>
+          <ul class="eval__list">
+            {ev.list.map((item) => <li>{item}</li>)}
+          </ul>
+
+          {ev.details.length > 0 && (
+            <details class="eval__more">
+              <summary>Ver más detalles</summary>
+              {ev.details.map((d) => (
+                <div class="eval__detail">
+                  <h5>{d.title}</h5>
+                  <p>{d.text}</p>
+                </div>
+              ))}
+            </details>
+          )}
+
+          <a href="#agenda" data-service={ev.name} class="btn btn--sm btn--purple js-pick eval__cta">
+            Agendar esta evaluación
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

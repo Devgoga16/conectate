@@ -1,64 +1,63 @@
 ---
 import Icon from "./Icon.astro";
-import Wave from "./Wave.astro";
 import { services } from "../data/site";
 ---
 <section class="services section" id="servicios">
-  <Wave position="top" fill="var(--white)" d="M0,0 L1440,0 L1440,30 C1200,80 980,10 720,40 C460,70 240,10 0,40 Z" />
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">Nuestros servicios</span>
       <h2>¿En qué podemos ayudarte?</h2>
-      <p>Cada plan se diseña a medida luego de conocer a tu hijo o hija. Estas son nuestras principales áreas de trabajo.</p>
+      <p>Cada plan se diseña a medida luego de conocer a tu hijo o hija. Elige un servicio para conocer más.</p>
     </div>
 
-    <div class="tabs reveal" role="tablist" aria-label="Servicios">
-      {services.map((s, i) => (
-        <button
-          class:list={["tab", { "is-active": i === 0 }]}
-          role="tab"
-          aria-selected={i === 0 ? "true" : "false"}
-          aria-controls={`tab-${s.id}`}
-          id={`t-${s.id}`}
-          data-tab={s.id}
-          tabindex={i === 0 ? undefined : -1}
-        >
-          {s.name}
-        </button>
-      ))}
-    </div>
+    <div class="svc reveal">
+      <div class="svc__tabs" role="tablist" aria-label="Servicios" aria-orientation="vertical">
+        {services.map((s, i) => (
+          <button
+            class:list={["svc__tab", `svc__tab--${s.color}`, { "is-active": i === 0 }]}
+            role="tab"
+            aria-selected={i === 0 ? "true" : "false"}
+            aria-controls={`tab-${s.id}`}
+            id={`t-${s.id}`}
+            data-tab={s.id}
+            tabindex={i === 0 ? undefined : -1}
+          >
+            <span class="svc__tab-ico"><Icon name={s.icon} /></span>
+            {s.name}
+          </button>
+        ))}
+      </div>
 
-    <div class="panels reveal">
-      {services.map((s, i) => (
-        <article
-          class:list={["panel", { "is-active": i === 0 }]}
-          role="tabpanel"
-          id={`tab-${s.id}`}
-          aria-labelledby={`t-${s.id}`}
-          hidden={i !== 0}
-        >
-          <div class="panel__text">
-            <h3>{s.title}</h3>
-            <p>{s.description}</p>
-            <ul class="bullets">
-              {s.bullets.map((b) => <li>{b}</li>)}
+      <div class="svc__panels">
+        {services.map((s, i) => (
+          <article
+            class:list={["svc__panel", `svc__panel--${s.color}`, { "is-active": i === 0 }]}
+            role="tabpanel"
+            id={`tab-${s.id}`}
+            aria-labelledby={`t-${s.id}`}
+            hidden={i !== 0}
+          >
+            <div class="svc__head">
+              <span class="svc__badge"><Icon name={s.icon} /></span>
+              <h3>{s.name}</h3>
+            </div>
+            <p class="svc__intro">{s.intro}</p>
+            <h4 class="svc__focus-title">{s.focusTitle ?? "¿Qué trabajamos?"}</h4>
+            <ul class="svc__focus">
+              {s.focus.map((f) => <li>{f}</li>)}
             </ul>
+            {s.note && <p class="svc__note">{s.note}</p>}
             <a href="#agenda" data-service={s.name} class="btn btn--sm btn--purple js-pick">Agendar este servicio</a>
-          </div>
-          <div class={`panel__art panel__art--${s.color}`} aria-hidden="true">
-            <Icon name={s.icon} />
-            <span class="chip c1">{s.chips[0]}</span>
-            <span class="chip c2">{s.chips[1]}</span>
-            <span class="chip c3">{s.chips[2]}</span>
-          </div>
-        </article>
-      ))}
+          </article>
+        ))}
+      </div>
     </div>
   </div>
 </section>
 
 <script>
-  const tabs = [...document.querySelectorAll<HTMLButtonElement>(".tab")];
+  const tabs = [...document.querySelectorAll<HTMLButtonElement>(".svc__tab")];
+  const mobile = window.matchMedia("(max-width: 1000px)");
 
   const activateTab = (name: string, focus = false) => {
     tabs.forEach((t) => {
@@ -69,23 +68,25 @@ import { services } from "../data/site";
       const panel = document.getElementById(`tab-${t.dataset.tab}`)!;
       panel.hidden = !on;
       panel.classList.toggle("is-active", on);
-      if (on && focus) t.focus();
+      if (on) {
+        if (focus) t.focus();
+        // En celular las pestañas son una fila deslizable: centra la elegida
+        if (mobile.matches) t.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+      }
     });
   };
 
   tabs.forEach((t, i) => {
     t.addEventListener("click", () => activateTab(t.dataset.tab!));
     t.addEventListener("keydown", (e) => {
-      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
-      const next = tabs[(i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length];
+      const fwd = e.key === "ArrowDown" || e.key === "ArrowRight";
+      const back = e.key === "ArrowUp" || e.key === "ArrowLeft";
+      if (!fwd && !back) return;
+      e.preventDefault();
+      const next = tabs[(i + (fwd ? 1 : tabs.length - 1)) % tabs.length];
       activateTab(next.dataset.tab!, true);
     });
   });
-
-  // "Ver más" de las tarjetas de áreas abre la pestaña correspondiente
-  document.querySelectorAll<HTMLAnchorElement>("a[data-tab]").forEach((a) =>
-    a.addEventListener("click", () => activateTab(a.dataset.tab!))
-  );
 
   // "Agendar este servicio" preselecciona el servicio en el formulario
   document.querySelectorAll<HTMLAnchorElement>(".js-pick").forEach((a) =>
