@@ -1,0 +1,47 @@
+---
+import Icon from "./Icon.astro";
+import Wave from "./Wave.astro";
+import { messages, site } from "../data/site";
+import { waLink } from "../lib/whatsapp";
+---
+<section class="hero" id="inicio">
+  <div class="deco deco--star" style="top:18%;left:6%"></div>
+  <div class="deco deco--star deco--sm" style="top:70%;left:44%"></div>
+  <div class="deco deco--star" style="top:12%;right:8%"></div>
+  <div class="deco deco--planet" style="bottom:22%;left:46%"></div>
+  <div class="deco deco--planet deco--orange" style="top:10%;right:2%"></div>
+
+  <div class="container hero__inner">
+    <div class="hero__text reveal">
+      <span class="tag">{site.tagline}</span>
+      <h1>Cada niño tiene su ritmo. <span class="grad">Te ayudamos a conectar</span> con el suyo.</h1>
+      <p class="hero__lead">
+        Terapia de lenguaje, educación especial y acompañamiento conductual para que tu peque se comunique,
+        aprenda y se desenvuelva con confianza, de la mano de su familia.
+      </p>
+      <div class="hero__actions">
+        <a href="#agenda" class="btn btn--yellow">Agendar una evaluación</a>
+        <a href={waLink(messages.general)} target="_blank" rel="noopener" class="btn btn--ghost">
+          <Icon name="whatsapp" class="ico" />
+          Escríbenos por WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <div class="hero__art reveal">
+      <div class="blob">
+        <img src="/img/isotipo.png" alt="" class="blob__iso" width="312" height="274" />
+      </div>
+      <div class="bubble bubble--1">¡Hola! 👋</div>
+      <div class="bubble bubble--2">ma · má</div>
+      <div class="bubble bubble--3">🧩</div>
+    </div>
+  </div>
+
+  <Wave
+    position="bottom"
+    fill="var(--sky)"
+    height={120}
+    d="M0,64 C180,120 320,10 520,40 C720,70 820,120 1040,90 C1220,64 1320,20 1440,40 L1440,120 L0,120 Z"
+  />
+</section>

@@ -1,0 +1,9 @@
+---
+// Usa los íconos definidos en IconSprite.astro
+interface Props {
+  name: "whatsapp" | "speech" | "puzzle" | "heart" | "family" | "pin" | "instagram";
+  class?: string;
+}
+const { name, class: className } = Astro.props;
+---
+<svg class={className} viewBox="0 0 24 24" aria-hidden="true"><use href={`#i-${name}`} /></svg>

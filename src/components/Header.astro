@@ -1,0 +1,58 @@
+---
+const links = [
+  { href: "#inicio", label: "Inicio" },
+  { href: "#nosotros", label: "Nosotros" },
+  { href: "#servicios", label: "Servicios" },
+  { href: "#como-trabajamos", label: "¿Cómo trabajamos?" },
+  { href: "#preguntas", label: "Preguntas" },
+];
+---
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a href="#inicio" class="header__logo" aria-label="Conéctate, ir al inicio">
+      <img src="/img/logo.png" alt="Conéctate - Centro Integral del Desarrollo Infantil" width="1009" height="274" />
+    </a>
+    <nav class="nav" id="nav" aria-label="Principal">
+      {links.map((l) => <a href={l.href}>{l.label}</a>)}
+      <a href="#agenda" class="btn btn--sm btn--pink nav__cta">Agenda tu cita</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById("header")!;
+  const nav = document.getElementById("nav")!;
+  const toggle = document.getElementById("navToggle")!;
+
+  // Sombra al hacer scroll
+  const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 10);
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  // Menú móvil
+  const setMenu = (open: boolean) => {
+    nav.classList.toggle("is-open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+  };
+  toggle.addEventListener("click", () => setMenu(!nav.classList.contains("is-open")));
+  nav.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
+
+  // Enlace activo según sección
+  const links = [...nav.querySelectorAll<HTMLAnchorElement>("a:not(.btn)")];
+  const spy = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        links.forEach((l) =>
+          l.classList.toggle("is-current", l.getAttribute("href") === `#${en.target.id}`)
+        );
+      });
+    },
+    { rootMargin: "-45% 0px -50% 0px" }
+  );
+  document.querySelectorAll("main section[id]").forEach((s) => spy.observe(s));
+</script>

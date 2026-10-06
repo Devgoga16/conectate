@@ -1,0 +1,26 @@
+---
+import Icon from "./Icon.astro";
+import Wave from "./Wave.astro";
+import { messages, signals } from "../data/site";
+import { waLink } from "../lib/whatsapp";
+---
+<section class="signals">
+  <Wave position="top" fill="var(--cream)" d="M0,0 L1440,0 L1440,40 C1180,0 980,70 720,40 C460,10 240,70 0,30 Z" />
+  <div class="deco deco--star" style="top:22%;left:4%"></div>
+  <div class="deco deco--star deco--sm" style="bottom:20%;right:6%"></div>
+  <div class="container signals__grid">
+    <div class="signals__text reveal">
+      <span class="tag tag--light">¿Cuándo consultar?</span>
+      <h2>Si notas alguna de estas señales, conversemos</h2>
+      <p>Una evaluación a tiempo marca la diferencia. No es para preocuparse, es para acompañar mejor.</p>
+      <a href={waLink(messages.orientation)} target="_blank" rel="noopener" class="btn btn--yellow">
+        <Icon name="whatsapp" class="ico" />
+        Quiero orientación
+      </a>
+    </div>
+    <ul class="signals__list reveal">
+      {signals.map((s) => <li>{s}</li>)}
+    </ul>
+  </div>
+  <Wave position="bottom" fill="var(--white)" d="M0,40 C260,80 460,0 720,30 C980,60 1180,10 1440,40 L1440,80 L0,80 Z" />
+</section>

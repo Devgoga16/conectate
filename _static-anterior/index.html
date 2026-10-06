@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="es-PE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Conéctate | Centro Integral del Desarrollo Infantil</title>
+  <meta name="description" content="Conéctate, Centro Integral del Desarrollo Infantil. Terapia de lenguaje, educación especial y abordaje conductual para niños y niñas, con la Lic. Pamela Valdez Hijar.">
+  <meta property="og:title" content="Conéctate | Centro Integral del Desarrollo Infantil">
+  <meta property="og:description" content="Acompañamos el desarrollo de tu hijo o hija con terapia de lenguaje, educación especial y abordaje conductual.">
+  <meta property="og:image" content="assets/img/logo.png">
+  <meta property="og:locale" content="es_PE">
+  <link rel="icon" href="assets/img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#inicio" class="header__logo" aria-label="Conéctate, ir al inicio">
+        <img src="assets/img/logo.png" alt="Conéctate - Centro Integral del Desarrollo Infantil">
+      </a>
+      <nav class="nav" id="nav" aria-label="Principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#como-trabajamos">¿Cómo trabajamos?</a>
+        <a href="#preguntas">Preguntas</a>
+        <a href="#agenda" class="btn btn--sm btn--pink nav__cta">Agenda tu cita</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="inicio">
+      <div class="deco deco--star" style="top:18%;left:6%"></div>
+      <div class="deco deco--star deco--sm" style="top:70%;left:44%"></div>
+      <div class="deco deco--star" style="top:12%;right:8%"></div>
+      <div class="deco deco--planet" style="bottom:22%;left:46%"></div>
+      <div class="deco deco--planet deco--orange" style="top:10%;right:2%"></div>
+
+      <div class="container hero__inner">
+        <div class="hero__text reveal">
+          <span class="tag">Centro Integral del Desarrollo Infantil</span>
+          <h1>Cada niño tiene su ritmo. <span class="grad">Te ayudamos a conectar</span> con el suyo.</h1>
+          <p class="hero__lead">Terapia de lenguaje, educación especial y acompañamiento conductual para que tu peque se comunique, aprenda y se desenvuelva con confianza, de la mano de su familia.</p>
+          <div class="hero__actions">
+            <a href="#agenda" class="btn btn--yellow">Agendar una evaluación</a>
+            <a href="#" class="btn btn--ghost js-wa" data-msg="¡Hola! Vi su página web y quisiera más información sobre Conéctate.">
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+              Escríbenos por WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <div class="hero__art reveal">
+          <div class="blob">
+            <img src="assets/img/isotipo.png" alt="" class="blob__iso">
+          </div>
+          <div class="bubble bubble--1">¡Hola! 👋</div>
+          <div class="bubble bubble--2">ma · má</div>
+          <div class="bubble bubble--3">🧩</div>
+        </div>
+      </div>
+
+      <svg class="wave wave--bottom" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,64 C180,120 320,10 520,40 C720,70 820,120 1040,90 C1220,64 1320,20 1440,40 L1440,120 L0,120 Z" fill="var(--sky)"/>
+      </svg>
+    </section>
+
+    <!-- ============ ÁREAS ============ -->
+    <section class="areas">
+      <div class="container areas__grid">
+        <article class="area reveal">
+          <div class="area__icon area__icon--pink"><svg viewBox="0 0 24 24"><use href="#i-speech"/></svg></div>
+          <h3>Terapia de lenguaje</h3>
+          <p>Estimulamos el habla, la comprensión y la comunicación para que tu hijo exprese lo que siente y piensa.</p>
+          <a href="#servicios" data-tab="lenguaje" class="link">Ver más →</a>
+        </article>
+        <article class="area reveal">
+          <div class="area__icon area__icon--purple"><svg viewBox="0 0 24 24"><use href="#i-puzzle"/></svg></div>
+          <h3>Educación especial</h3>
+          <p>Acompañamos el aprendizaje respetando su ritmo, con estrategias adaptadas a sus necesidades.</p>
+          <a href="#servicios" data-tab="aprendizaje" class="link">Ver más →</a>
+        </article>
+        <article class="area reveal">
+          <div class="area__icon area__icon--orange"><svg viewBox="0 0 24 24"><use href="#i-heart"/></svg></div>
+          <h3>Área conductual</h3>
+          <p>Trabajamos la regulación emocional, la conducta y las habilidades sociales en casa y en el cole.</p>
+          <a href="#servicios" data-tab="conductual" class="link">Ver más →</a>
+        </article>
+      </div>
+      <svg class="wave wave--bottom" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,40 C240,100 420,0 720,40 C1000,80 1200,10 1440,50 L1440,100 L0,100 Z" fill="var(--white)"/>
+      </svg>
+    </section>
+
+    <!-- ============ NOSOTROS ============ -->
+    <section class="about section" id="nosotros">
+      <div class="container about__grid">
+        <div class="about__media reveal">
+          <div class="portrait">
+            <!-- Reemplazar por foto: <img src="assets/img/pamela.jpg" alt="Lic. Pamela Valdez Hijar"> -->
+            <div class="portrait__placeholder">
+              <span>PV</span>
+              <small>Foto de Pamela</small>
+            </div>
+          </div>
+          <div class="hours-card">
+            <h4>Horario de atención</h4>
+            <ul>
+              <li><span>Lun – Vie</span><b>9:00 a.m. – 7:00 p.m.</b></li>
+              <li><span>Sábados</span><b>9:00 a.m. – 1:00 p.m.</b></li>
+              <li><span>Domingos</span><b>Cerrado</b></li>
+            </ul>
+          </div>
+          <div class="deco-balloon" aria-hidden="true"></div>
+        </div>
+
+        <div class="about__text reveal">
+          <span class="eyebrow">¡Hola, soy Pamela Valdez Hijar! ✨</span>
+          <h2>Un lugar para crecer, comunicarse y <span class="grad">sentirse comprendido</span></h2>
+          <p>Soy Licenciada en Educación Especial, con especialidad en Retardo Mental, y cuento además con especialización en Lenguaje y en el Área Conductual.</p>
+          <p>Creé <b>Conéctate</b> para que las familias encuentren un espacio cálido y profesional donde sus hijos sean vistos de manera integral: cómo hablan, cómo aprenden, cómo sienten y cómo se relacionan.</p>
+          <ul class="checks">
+            <li>Lic. en Educación Especial</li>
+            <li>Especialidad en Retardo Mental</li>
+            <li>Especialización en Lenguaje</li>
+            <li>Especialización en el Área Conductual</li>
+          </ul>
+          <a href="#agenda" class="btn btn--pink">Conversemos sobre tu peque</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICIOS ============ -->
+    <section class="services section" id="servicios">
+      <svg class="wave wave--top" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,0 L1440,0 L1440,30 C1200,80 980,10 720,40 C460,70 240,10 0,40 Z" fill="var(--white)"/>
+      </svg>
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Nuestros servicios</span>
+          <h2>¿En qué podemos ayudarte?</h2>
+          <p>Cada plan se diseña a medida luego de conocer a tu hijo o hija. Estas son nuestras principales áreas de trabajo.</p>
+        </div>
+
+        <div class="tabs reveal" role="tablist" aria-label="Servicios">
+          <button class="tab is-active" role="tab" aria-selected="true" aria-controls="tab-lenguaje" id="t-lenguaje" data-tab="lenguaje">Terapia de lenguaje</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="tab-aprendizaje" id="t-aprendizaje" data-tab="aprendizaje" tabindex="-1">Educación especial</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="tab-conductual" id="t-conductual" data-tab="conductual" tabindex="-1">Área conductual</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="tab-familia" id="t-familia" data-tab="familia" tabindex="-1">Orientación a padres</button>
+        </div>
+
+        <div class="panels reveal">
+          <article class="panel is-active" role="tabpanel" id="tab-lenguaje" aria-labelledby="t-lenguaje">
+            <div class="panel__text">
+              <h3>Terapia de lenguaje</h3>
+              <p>Ayudamos a tu peque a comunicarse mejor: desde sus primeras palabras hasta una conversación fluida, trabajando de forma lúdica y con objetivos claros.</p>
+              <ul class="bullets">
+                <li>Retraso en la aparición del habla</li>
+                <li>Dificultades de pronunciación (dislalias)</li>
+                <li>Comprensión y expresión del lenguaje</li>
+                <li>Comunicación aumentativa y alternativa</li>
+              </ul>
+              <a href="#agenda" data-service="Terapia de lenguaje" class="btn btn--sm btn--purple js-pick">Agendar este servicio</a>
+            </div>
+            <div class="panel__art panel__art--pink" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><use href="#i-speech"/></svg>
+              <span class="chip c1">ba · ba</span><span class="chip c2">¡agua!</span><span class="chip c3">🗣️</span>
+            </div>
+          </article>
+
+          <article class="panel" role="tabpanel" id="tab-aprendizaje" aria-labelledby="t-aprendizaje" hidden>
+            <div class="panel__text">
+              <h3>Educación especial y aprendizaje</h3>
+              <p>Acompañamos a niños y niñas con necesidades educativas especiales para potenciar sus habilidades y su autonomía, en coordinación con su nido o colegio.</p>
+              <ul class="bullets">
+                <li>Discapacidad intelectual y retraso en el desarrollo</li>
+                <li>Dificultades de atención y aprendizaje</li>
+                <li>Lectoescritura y cálculo</li>
+                <li>Adaptaciones y orientación escolar</li>
+              </ul>
+              <a href="#agenda" data-service="Educación especial" class="btn btn--sm btn--purple js-pick">Agendar este servicio</a>
+            </div>
+            <div class="panel__art panel__art--purple" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><use href="#i-puzzle"/></svg>
+              <span class="chip c1">A B C</span><span class="chip c2">1 + 2</span><span class="chip c3">✏️</span>
+            </div>
+          </article>
+
+          <article class="panel" role="tabpanel" id="tab-conductual" aria-labelledby="t-conductual" hidden>
+            <div class="panel__text">
+              <h3>Área conductual</h3>
+              <p>Brindamos herramientas para entender y acompañar la conducta de tu hijo, favoreciendo su regulación emocional y la convivencia en casa y en el aula.</p>
+              <ul class="bullets">
+                <li>Rabietas y dificultad para manejar emociones</li>
+                <li>Rutinas, normas y límites</li>
+                <li>Habilidades sociales y de juego</li>
+                <li>Acompañamiento en condiciones del neurodesarrollo (TEA, TDAH)</li>
+              </ul>
+              <a href="#agenda" data-service="Área conductual" class="btn btn--sm btn--purple js-pick">Agendar este servicio</a>
+            </div>
+            <div class="panel__art panel__art--orange" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><use href="#i-heart"/></svg>
+              <span class="chip c1">😊</span><span class="chip c2">¡lo logré!</span><span class="chip c3">⭐</span>
+            </div>
+          </article>
+
+          <article class="panel" role="tabpanel" id="tab-familia" aria-labelledby="t-familia" hidden>
+            <div class="panel__text">
+              <h3>Orientación a padres</h3>
+              <p>La familia es parte del equipo. Te guiamos con pautas sencillas para que el avance de la terapia continúe en casa, en el día a día.</p>
+              <ul class="bullets">
+                <li>Pautas de estimulación en casa</li>
+                <li>Reuniones de avance y seguimiento</li>
+                <li>Coordinación con el nido o colegio</li>
+                <li>Resolución de dudas y acompañamiento</li>
+              </ul>
+              <a href="#agenda" data-service="Orientación a padres" class="btn btn--sm btn--purple js-pick">Agendar este servicio</a>
+            </div>
+            <div class="panel__art panel__art--teal" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><use href="#i-family"/></svg>
+              <span class="chip c1">🏡</span><span class="chip c2">en equipo</span><span class="chip c3">💬</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SEÑALES / CTA ============ -->
+    <section class="signals">
+      <svg class="wave wave--top" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,0 L1440,0 L1440,40 C1180,0 980,70 720,40 C460,10 240,70 0,30 Z" fill="var(--cream)"/>
+      </svg>
+      <div class="deco deco--star" style="top:22%;left:4%"></div>
+      <div class="deco deco--star deco--sm" style="bottom:20%;right:6%"></div>
+      <div class="container signals__grid">
+        <div class="signals__text reveal">
+          <span class="tag tag--light">¿Cuándo consultar?</span>
+          <h2>Si notas alguna de estas señales, conversemos</h2>
+          <p>Una evaluación a tiempo marca la diferencia. No es para preocuparse, es para acompañar mejor.</p>
+          <a href="#" class="btn btn--yellow js-wa" data-msg="¡Hola! Noté algunas señales en mi hijo/a y quisiera orientación. ¿Me podrían ayudar?">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+            Quiero orientación
+          </a>
+        </div>
+        <ul class="signals__list reveal">
+          <li>A los 2 años dice muy pocas palabras o no forma frases cortas.</li>
+          <li>Le cuesta entender o seguir indicaciones sencillas.</li>
+          <li>Su forma de hablar es difícil de entender para otras personas.</li>
+          <li>Tiene rabietas muy frecuentes o intensas que cuesta calmar.</li>
+          <li>Evita el contacto visual o prefiere jugar siempre solo.</li>
+          <li>Presenta dificultades para aprender a leer, escribir o concentrarse.</li>
+        </ul>
+      </div>
+      <svg class="wave wave--bottom" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,40 C260,80 460,0 720,30 C980,60 1180,10 1440,40 L1440,80 L0,80 Z" fill="var(--white)"/>
+      </svg>
+    </section>
+
+    <!-- ============ CÓMO TRABAJAMOS ============ -->
+    <section class="process section" id="como-trabajamos">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Paso a paso</span>
+          <h2>¿Cómo trabajamos?</h2>
+          <p>Un proceso claro y cercano, para que sepas en todo momento cómo avanza tu hijo o hija.</p>
+        </div>
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="step__n">1</span>
+            <h3>Nos escribes</h3>
+            <p>Cuéntanos por WhatsApp o con el formulario qué te preocupa y la edad de tu peque.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step__n">2</span>
+            <h3>Evaluación inicial</h3>
+            <p>Conocemos a tu hijo a través del juego y conversamos con la familia sobre su historia.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step__n">3</span>
+            <h3>Plan personalizado</h3>
+            <p>Definimos objetivos claros y la frecuencia de sesiones según sus necesidades.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step__n">4</span>
+            <h3>Seguimiento en familia</h3>
+            <p>Te damos pautas para casa y revisamos juntos los avances de forma periódica.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ VALORES ============ -->
+    <section class="values">
+      <svg class="wave wave--top" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,0 L1440,0 L1440,40 C1200,80 960,0 720,30 C480,60 240,0 0,40 Z" fill="var(--white)"/>
+      </svg>
+      <div class="container values__grid">
+        <div class="value reveal"><b>1 a 1</b><span>Sesiones individuales</span></div>
+        <div class="value reveal"><b>3</b><span>Áreas de especialidad</span></div>
+        <div class="value reveal"><b>100%</b><span>Planes personalizados</span></div>
+        <div class="value reveal"><b>❤</b><span>La familia en el equipo</span></div>
+      </div>
+      <svg class="wave wave--bottom" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,30 C240,80 480,0 720,40 C960,80 1200,10 1440,40 L1440,80 L0,80 Z" fill="var(--white)"/>
+      </svg>
+    </section>
+
+    <!-- ============ AGENDA ============ -->
+    <section class="booking section" id="agenda">
+      <div class="container booking__grid">
+        <div class="booking__text reveal">
+          <span class="eyebrow">Agenda tu cita</span>
+          <h2>Separa una <span class="grad">evaluación</span> para tu peque</h2>
+          <p>Completa estos datos y te llevaremos a WhatsApp con el mensaje listo. Te responderemos para confirmar día y hora.</p>
+          <ul class="contact-list">
+            <li>
+              <span class="contact-list__ico"><svg viewBox="0 0 24 24"><use href="#i-whatsapp"/></svg></span>
+              <div><small>WhatsApp</small><a href="#" class="js-wa js-phone" data-msg="¡Hola! Quisiera agendar una cita en Conéctate.">+51 900 000 000</a></div>
+            </li>
+            <li>
+              <span class="contact-list__ico"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg></span>
+              <div><small>Dirección</small><span>Lima, Perú (dirección por confirmar)</span></div>
+            </li>
+            <li>
+              <span class="contact-list__ico"><svg viewBox="0 0 24 24"><use href="#i-instagram"/></svg></span>
+              <div><small>Instagram</small><a href="https://www.instagram.com/" target="_blank" rel="noopener">@conectate</a></div>
+            </li>
+          </ul>
+        </div>
+
+        <form class="form reveal" id="bookingForm" novalidate>
+          <div class="form__row">
+            <label>Tu nombre
+              <input type="text" name="padre" placeholder="Ej. Rosa Quispe" required autocomplete="name">
+            </label>
+            <label>Nombre de tu peque
+              <input type="text" name="nino" placeholder="Ej. Mateo" required>
+            </label>
+          </div>
+          <div class="form__row">
+            <label>Edad
+              <select name="edad" required>
+                <option value="">Selecciona</option>
+                <option>Menos de 2 años</option>
+                <option>2 a 3 años</option>
+                <option>4 a 5 años</option>
+                <option>6 a 8 años</option>
+                <option>9 a 12 años</option>
+                <option>Más de 12 años</option>
+              </select>
+            </label>
+            <label>Servicio de interés
+              <select name="servicio" id="servicio" required>
+                <option value="">Selecciona</option>
+                <option>Evaluación inicial</option>
+                <option>Terapia de lenguaje</option>
+                <option>Educación especial</option>
+                <option>Área conductual</option>
+                <option>Orientación a padres</option>
+                <option>Aún no lo sé, quiero orientación</option>
+              </select>
+            </label>
+          </div>
+          <fieldset class="form__turno">
+            <legend>Turno preferido</legend>
+            <label class="pill"><input type="radio" name="turno" value="Mañana" checked><span>Mañana</span></label>
+            <label class="pill"><input type="radio" name="turno" value="Tarde"><span>Tarde</span></label>
+            <label class="pill"><input type="radio" name="turno" value="Sábado"><span>Sábado</span></label>
+          </fieldset>
+          <label>Cuéntanos brevemente (opcional)
+            <textarea name="mensaje" rows="3" placeholder="¿Qué has notado o qué te gustaría trabajar?"></textarea>
+          </label>
+          <p class="form__error" id="formError" role="alert" hidden>Por favor completa los campos marcados.</p>
+          <button type="submit" class="btn btn--pink btn--block">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+            Enviar por WhatsApp
+          </button>
+          <small class="form__note">Tus datos no se guardan en esta web: solo se usan para armar tu mensaje de WhatsApp.</small>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="faq section" id="preguntas">
+      <div class="container faq__inner">
+        <div class="section-head reveal">
+          <span class="eyebrow">Preguntas frecuentes</span>
+          <h2>Resolvemos tus dudas</h2>
+        </div>
+        <div class="faq__list reveal">
+          <details>
+            <summary>¿Desde qué edad pueden atender a mi hijo?</summary>
+            <p>Atendemos desde la primera infancia. Mientras más temprano se detecte una dificultad, mejores resultados se logran. Escríbenos y te orientamos según su edad.</p>
+          </details>
+          <details>
+            <summary>¿Necesito un diagnóstico o una orden médica?</summary>
+            <p>No es necesario. Si ya cuentas con informes de otros especialistas, tráelos a la evaluación inicial; nos ayudan a conocer mejor a tu peque.</p>
+          </details>
+          <details>
+            <summary>¿Cuánto dura cada sesión y cuántas veces por semana?</summary>
+            <p>Depende de cada caso. Luego de la evaluación te proponemos un plan con la frecuencia y duración recomendadas.</p>
+          </details>
+          <details>
+            <summary>¿Puedo estar presente en las sesiones?</summary>
+            <p>Sí, la participación de la familia es clave. Coordinaremos contigo los momentos en que tu presencia sume más al proceso.</p>
+          </details>
+          <details>
+            <summary>¿Cuál es el costo de la evaluación?</summary>
+            <p>Escríbenos por WhatsApp y te compartimos las tarifas vigentes y la disponibilidad de horarios.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <svg class="wave wave--top" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,0 L1440,0 L1440,30 C1200,80 960,10 720,40 C480,70 240,0 0,40 Z" fill="var(--cream)"/>
+    </svg>
+    <div class="container footer__grid">
+      <div>
+        <div class="footer__logo"><img src="assets/img/isotipo.png" alt=""><span>conéctate</span></div>
+        <p>Centro Integral del Desarrollo Infantil. Acompañamos a cada niño y niña a comunicarse, aprender y crecer a su ritmo.</p>
+      </div>
+      <div>
+        <h4>Navega</h4>
+        <ul>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#como-trabajamos">¿Cómo trabajamos?</a></li>
+          <li><a href="#agenda">Agenda tu cita</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="#" class="js-wa js-phone" data-msg="¡Hola! Quisiera más información.">+51 900 000 000</a></li>
+          <li>Lima, Perú</li>
+          <li><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Horario</h4>
+        <ul class="footer__hours">
+          <li><span>Lun – Vie</span><span>9 a.m. – 7 p.m.</span></li>
+          <li><span>Sábados</span><span>9 a.m. – 1 p.m.</span></li>
+          <li><span>Domingos</span><span>Cerrado</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <small>© <span id="year"></span> Conéctate · Centro Integral del Desarrollo Infantil. Todos los derechos reservados.</small>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flotante -->
+  <a href="#" class="wa-float js-wa" data-msg="¡Hola! Vi su página web y quisiera más información sobre Conéctate." aria-label="Escríbenos por WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+  </a>
+
+  <!-- ============ ICONOS ============ -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2a9.9 9.9 0 0 0-8.5 15l-1.4 5 5.2-1.36A9.9 9.9 0 1 0 12.04 2Zm0 18.1a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3.08.8.82-3-.2-.31a8.2 8.2 0 1 1 6.96 3.84Zm4.5-6.14c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.55.12-.17.25-.64.8-.78.97-.14.16-.29.18-.53.06a6.7 6.7 0 0 1-3.34-2.92c-.25-.43.25-.4.72-1.34.08-.16.04-.3-.02-.43-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.41-.55-.42h-.47a.9.9 0 0 0-.66.31 2.76 2.76 0 0 0-.86 2.05 4.8 4.8 0 0 0 1 2.55c.13.16 1.73 2.64 4.2 3.7 1.56.68 2.17.73 2.95.62.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.08.14-1.18-.06-.1-.22-.17-.47-.29Z"/></symbol>
+    <symbol id="i-speech" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v10H9l-5 4z"/><path d="M8 9.5h.01M12 9.5h.01M16 9.5h.01" stroke-width="2.6"/></g></symbol>
+    <symbol id="i-puzzle" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M10 4a2 2 0 1 1 4 0v2h4v4h-2a2 2 0 1 0 0 4h2v4h-4v-2a2 2 0 1 0-4 0v2H6v-4H4a2 2 0 1 1 0-4h2V6h4z"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M9 11h1.5l1-2 1.5 4 1-2H15"/></symbol>
+    <symbol id="i-family" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="7" cy="6" r="2.2"/><circle cx="17" cy="6" r="2.2"/><circle cx="12" cy="12" r="1.8"/><path d="M3.5 20v-5a3.5 3.5 0 0 1 7 0M13.5 15a3.5 3.5 0 0 1 7 0v5M9.5 20v-2.5a2.5 2.5 0 0 1 5 0V20"/></g></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></g></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".8" fill="currentColor"/></g></symbol>
+  </svg>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

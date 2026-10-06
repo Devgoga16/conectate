@@ -1,0 +1,36 @@
+---
+import { credentials, site } from "../data/site";
+---
+<section class="about section" id="nosotros">
+  <div class="container about__grid">
+    <div class="about__media reveal">
+      <div class="portrait">
+        <img src="/img/pamelav1.jpg" alt="Lic. Pamela Valdez Hijar" width="1080" height="1080" loading="lazy" />
+      </div>
+      <div class="hours-card">
+        <h4>Horario de atención</h4>
+        <ul>
+          {site.hours.map((h) => <li><span>{h.days}</span><b>{h.time}</b></li>)}
+        </ul>
+      </div>
+      <div class="deco-balloon" aria-hidden="true"></div>
+    </div>
+
+    <div class="about__text reveal">
+      <span class="eyebrow">¡Hola, soy Pamela Valdez Hijar! ✨</span>
+      <h2>Un lugar para crecer, comunicarse y <span class="grad">sentirse comprendido</span></h2>
+      <p>
+        Soy Licenciada en Educación Especial, con especialidad en Retardo Mental, y cuento además con
+        especialización en Lenguaje y en el Área Conductual.
+      </p>
+      <p>
+        Creé <b>Conéctate</b> para que las familias encuentren un espacio cálido y profesional donde sus hijos sean
+        vistos de manera integral: cómo hablan, cómo aprenden, cómo sienten y cómo se relacionan.
+      </p>
+      <ul class="checks">
+        {credentials.map((c) => <li>{c}</li>)}
+      </ul>
+      <a href="#agenda" class="btn btn--pink">Conversemos sobre tu peque</a>
+    </div>
+  </div>
+</section>

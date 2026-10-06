@@ -1,0 +1,13 @@
+---
+// Divisor ondulado entre secciones
+interface Props {
+  position: "top" | "bottom";
+  fill: string; // variable CSS, p. ej. "var(--sky)"
+  d: string;
+  height?: number;
+}
+const { position, fill, d, height = 80 } = Astro.props;
+---
+<svg class={`wave wave--${position}`} viewBox={`0 0 1440 ${height}`} preserveAspectRatio="none" aria-hidden="true">
+  <path d={d} fill={fill} />
+</svg>

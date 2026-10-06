@@ -1,0 +1,8 @@
+---
+import Icon from "./Icon.astro";
+import { messages } from "../data/site";
+import { waLink } from "../lib/whatsapp";
+---
+<a href={waLink(messages.general)} target="_blank" rel="noopener" class="wa-float" aria-label="Escríbenos por WhatsApp">
+  <Icon name="whatsapp" />
+</a>

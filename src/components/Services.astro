@@ -1,0 +1,97 @@
+---
+import Icon from "./Icon.astro";
+import Wave from "./Wave.astro";
+import { services } from "../data/site";
+---
+<section class="services section" id="servicios">
+  <Wave position="top" fill="var(--white)" d="M0,0 L1440,0 L1440,30 C1200,80 980,10 720,40 C460,70 240,10 0,40 Z" />
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Nuestros servicios</span>
+      <h2>¿En qué podemos ayudarte?</h2>
+      <p>Cada plan se diseña a medida luego de conocer a tu hijo o hija. Estas son nuestras principales áreas de trabajo.</p>
+    </div>
+
+    <div class="tabs reveal" role="tablist" aria-label="Servicios">
+      {services.map((s, i) => (
+        <button
+          class:list={["tab", { "is-active": i === 0 }]}
+          role="tab"
+          aria-selected={i === 0 ? "true" : "false"}
+          aria-controls={`tab-${s.id}`}
+          id={`t-${s.id}`}
+          data-tab={s.id}
+          tabindex={i === 0 ? undefined : -1}
+        >
+          {s.name}
+        </button>
+      ))}
+    </div>
+
+    <div class="panels reveal">
+      {services.map((s, i) => (
+        <article
+          class:list={["panel", { "is-active": i === 0 }]}
+          role="tabpanel"
+          id={`tab-${s.id}`}
+          aria-labelledby={`t-${s.id}`}
+          hidden={i !== 0}
+        >
+          <div class="panel__text">
+            <h3>{s.title}</h3>
+            <p>{s.description}</p>
+            <ul class="bullets">
+              {s.bullets.map((b) => <li>{b}</li>)}
+            </ul>
+            <a href="#agenda" data-service={s.name} class="btn btn--sm btn--purple js-pick">Agendar este servicio</a>
+          </div>
+          <div class={`panel__art panel__art--${s.color}`} aria-hidden="true">
+            <Icon name={s.icon} />
+            <span class="chip c1">{s.chips[0]}</span>
+            <span class="chip c2">{s.chips[1]}</span>
+            <span class="chip c3">{s.chips[2]}</span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  const tabs = [...document.querySelectorAll<HTMLButtonElement>(".tab")];
+
+  const activateTab = (name: string, focus = false) => {
+    tabs.forEach((t) => {
+      const on = t.dataset.tab === name;
+      t.classList.toggle("is-active", on);
+      t.setAttribute("aria-selected", String(on));
+      t.tabIndex = on ? 0 : -1;
+      const panel = document.getElementById(`tab-${t.dataset.tab}`)!;
+      panel.hidden = !on;
+      panel.classList.toggle("is-active", on);
+      if (on && focus) t.focus();
+    });
+  };
+
+  tabs.forEach((t, i) => {
+    t.addEventListener("click", () => activateTab(t.dataset.tab!));
+    t.addEventListener("keydown", (e) => {
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+      const next = tabs[(i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length];
+      activateTab(next.dataset.tab!, true);
+    });
+  });
+
+  // "Ver más" de las tarjetas de áreas abre la pestaña correspondiente
+  document.querySelectorAll<HTMLAnchorElement>("a[data-tab]").forEach((a) =>
+    a.addEventListener("click", () => activateTab(a.dataset.tab!))
+  );
+
+  // "Agendar este servicio" preselecciona el servicio en el formulario
+  document.querySelectorAll<HTMLAnchorElement>(".js-pick").forEach((a) =>
+    a.addEventListener("click", () => {
+      const select = document.getElementById("servicio") as HTMLSelectElement | null;
+      if (select) select.value = a.dataset.service!;
+    })
+  );
+</script>

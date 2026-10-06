@@ -1,0 +1,110 @@
+---
+import Icon from "./Icon.astro";
+import { ages, messages, services, shifts, site } from "../data/site";
+import { waLink } from "../lib/whatsapp";
+
+const serviceOptions = ["Evaluación inicial", ...services.map((s) => s.name), "Aún no lo sé, quiero orientación"];
+---
+<section class="booking section" id="agenda">
+  <div class="container booking__grid">
+    <div class="booking__text reveal">
+      <span class="eyebrow">Agenda tu cita</span>
+      <h2>Separa una <span class="grad">evaluación</span> para tu peque</h2>
+      <p>Completa estos datos y te llevaremos a WhatsApp con el mensaje listo. Te responderemos para confirmar día y hora.</p>
+      <ul class="contact-list">
+        <li>
+          <span class="contact-list__ico"><Icon name="whatsapp" /></span>
+          <div><small>WhatsApp</small><a href={waLink(messages.booking)} target="_blank" rel="noopener">{site.phoneDisplay}</a></div>
+        </li>
+        <li>
+          <span class="contact-list__ico"><Icon name="pin" /></span>
+          <div><small>Dirección</small><span>{site.address}</span></div>
+        </li>
+        <li>
+          <span class="contact-list__ico"><Icon name="instagram" /></span>
+          <div><small>Instagram</small><a href={site.instagram.url} target="_blank" rel="noopener">{site.instagram.user}</a></div>
+        </li>
+      </ul>
+    </div>
+
+    <form class="form reveal" id="bookingForm" novalidate>
+      <div class="form__row">
+        <label>Tu nombre
+          <input type="text" name="padre" placeholder="Ej. Rosa Quispe" required autocomplete="name" />
+        </label>
+        <label>Nombre de tu peque
+          <input type="text" name="nino" placeholder="Ej. Mateo" required />
+        </label>
+      </div>
+      <div class="form__row">
+        <label>Edad
+          <select name="edad" required>
+            <option value="">Selecciona</option>
+            {ages.map((a) => <option>{a}</option>)}
+          </select>
+        </label>
+        <label>Servicio de interés
+          <select name="servicio" id="servicio" required>
+            <option value="">Selecciona</option>
+            {serviceOptions.map((s) => <option>{s}</option>)}
+          </select>
+        </label>
+      </div>
+      <fieldset class="form__turno">
+        <legend>Turno preferido</legend>
+        {shifts.map((s, i) => (
+          <label class="pill"><input type="radio" name="turno" value={s} checked={i === 0} /><span>{s}</span></label>
+        ))}
+      </fieldset>
+      <label>Cuéntanos brevemente (opcional)
+        <textarea name="mensaje" rows="3" placeholder="¿Qué has notado o qué te gustaría trabajar?"></textarea>
+      </label>
+      <p class="form__error" id="formError" role="alert" hidden>Por favor completa los campos marcados.</p>
+      <button type="submit" class="btn btn--pink btn--block">
+        <Icon name="whatsapp" class="ico" />
+        Enviar por WhatsApp
+      </button>
+      <small class="form__note">Tus datos no se guardan en esta web: solo se usan para armar tu mensaje de WhatsApp.</small>
+    </form>
+  </div>
+</section>
+
+<script>
+  import { waLink } from "../lib/whatsapp";
+
+  const form = document.getElementById("bookingForm") as HTMLFormElement;
+  const errorBox = document.getElementById("formError")!;
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let ok = true;
+    form.querySelectorAll<HTMLInputElement | HTMLSelectElement>("[required]").forEach((f) => {
+      const bad = !f.value.trim();
+      f.classList.toggle("is-invalid", bad);
+      if (bad) ok = false;
+    });
+    errorBox.hidden = ok;
+    if (!ok) {
+      form.querySelector<HTMLElement>(".is-invalid")!.focus();
+      return;
+    }
+
+    const d = Object.fromEntries(new FormData(form)) as Record<string, string>;
+    const lines = [
+      "¡Hola, Conéctate! 👋 Quisiera agendar una cita.",
+      "",
+      `• Mi nombre: ${d.padre.trim()}`,
+      `• Nombre de mi peque: ${d.nino.trim()}`,
+      `• Edad: ${d.edad}`,
+      `• Servicio: ${d.servicio}`,
+      `• Turno preferido: ${d.turno}`,
+    ];
+    if (d.mensaje.trim()) lines.push(`• Comentario: ${d.mensaje.trim()}`);
+    window.open(waLink(lines.join("\n")), "_blank", "noopener");
+  });
+
+  form.addEventListener("input", (e) => {
+    const el = e.target as HTMLInputElement;
+    if (el.classList.contains("is-invalid") && el.value.trim()) el.classList.remove("is-invalid");
+  });
+</script>

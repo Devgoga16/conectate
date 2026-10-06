@@ -1,0 +1,42 @@
+---
+import Wave from "./Wave.astro";
+import { messages, site } from "../data/site";
+import { waLink } from "../lib/whatsapp";
+
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+  <Wave position="top" fill="var(--cream)" d="M0,0 L1440,0 L1440,30 C1200,80 960,10 720,40 C480,70 240,0 0,40 Z" />
+  <div class="container footer__grid">
+    <div>
+      <div class="footer__logo"><img src="/img/isotipo.png" alt="" width="312" height="274" /><span>conéctate</span></div>
+      <p>{site.tagline}. Acompañamos a cada niño y niña a comunicarse, aprender y crecer a su ritmo.</p>
+    </div>
+    <div>
+      <h4>Navega</h4>
+      <ul>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#como-trabajamos">¿Cómo trabajamos?</a></li>
+        <li><a href="#agenda">Agenda tu cita</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href={waLink(messages.general)} target="_blank" rel="noopener">{site.phoneDisplay}</a></li>
+        <li>{site.city}</li>
+        <li><a href={site.instagram.url} target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Horario</h4>
+      <ul class="footer__hours">
+        {site.hours.map((h) => <li><span>{h.days}</span><span>{h.short}</span></li>)}
+      </ul>
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <small>© {year} {site.name} · {site.tagline}. Todos los derechos reservados.</small>
+  </div>
+</footer>

@@ -1,0 +1,21 @@
+---
+import { steps } from "../data/site";
+---
+<section class="process section" id="como-trabajamos">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Paso a paso</span>
+      <h2>¿Cómo trabajamos?</h2>
+      <p>Un proceso claro y cercano, para que sepas en todo momento cómo avanza tu hijo o hija.</p>
+    </div>
+    <ol class="steps">
+      {steps.map((s, i) => (
+        <li class="step reveal">
+          <span class="step__n">{i + 1}</span>
+          <h3>{s.title}</h3>
+          <p>{s.text}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

@@ -1,0 +1,13 @@
+---
+import Wave from "./Wave.astro";
+import { values } from "../data/site";
+---
+<section class="values">
+  <Wave position="top" fill="var(--white)" d="M0,0 L1440,0 L1440,40 C1200,80 960,0 720,30 C480,60 240,0 0,40 Z" />
+  <div class="container values__grid">
+    {values.map((v) => (
+      <div class="value reveal"><b>{v.value}</b><span>{v.label}</span></div>
+    ))}
+  </div>
+  <Wave position="bottom" fill="var(--white)" d="M0,30 C240,80 480,0 720,40 C960,80 1200,10 1440,40 L1440,80 L0,80 Z" />
+</section>
